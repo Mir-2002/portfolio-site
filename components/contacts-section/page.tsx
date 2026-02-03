@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { Mail, Phone, Github, Linkedin } from "lucide-react";
+import { FaUpwork } from "react-icons/fa6";
 
 export default function Contact() {
   return (
@@ -54,7 +55,7 @@ export default function Contact() {
           {/* Social Links */}
           <div className="flex gap-4 pt-4">
             <Link
-              href="https://github.com/yourusername"
+              href="https://github.com/Mir-2002"
               target="_blank"
               rel="noopener noreferrer"
               className="p-4 bg-white/80 backdrop-blur-sm rounded-lg hover:shadow-lg transition-all duration-300 group"
@@ -65,14 +66,15 @@ export default function Contact() {
                 size={28}
               />
             </Link>
+
             <Link
-              href="https://linkedin.com/in/yourusername"
+              href="https://upwork.com/freelancers/~yourprofile"
               target="_blank"
               rel="noopener noreferrer"
               className="p-4 bg-white/80 backdrop-blur-sm rounded-lg hover:shadow-lg transition-all duration-300 group"
-              aria-label="LinkedIn"
+              aria-label="Upwork"
             >
-              <Linkedin
+              <FaUpwork
                 className="text-primary-green group-hover:text-secondary-green transition-colors"
                 size={28}
               />
