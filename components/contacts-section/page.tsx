@@ -6,7 +6,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="w-full py-24 lg:py-32 px-10 md:px-20 flex flex-col border-t border-border"
+      className="min-h-screen w-full py-20 px-10 md:px-20 flex flex-col justify-center"
     >
       <h2 className="text-4xl md:text-5xl font-bold text-accent mb-12">
         Get In Touch
@@ -67,7 +67,7 @@ export default function Contact() {
             </Link>
 
             <Link
-              href="https://linkedin.com/in/ahmer-macasindel"
+              href="https://www.linkedin.com/in/ahmer-macasindel-a02280331/"
               target="_blank"
               rel="noopener noreferrer"
               className="p-4 bg-surface border border-border rounded-lg hover:border-accent/40 hover:bg-surface-hover transition-all duration-300 group"
