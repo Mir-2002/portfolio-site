@@ -1,4 +1,3 @@
-// filepath: c:\Users\orfia\Documents\Portfolio\portfolio-website\components\navbar\page.tsx
 "use client";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
@@ -19,16 +18,12 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav
-      className={`sticky top-0 w-full z-20 flex flex-col bg-white ${
-        open ? "bg-white/80 transition-colors duration-300 ease-in-out" : ""
-      }`}
-    >
+    <nav className="sticky top-0 w-full z-20 flex flex-col bg-surface border-b border-border">
       {/* Top bar (always visible) */}
-      <div className="flex h-[7vh] items-center justify-between px-6 rounded-lg">
+      <div className="flex h-[7vh] items-center justify-between px-6 md:px-10">
         <Link
           href="/"
-          className="sm:text-lg lg:text-xl xl:text-2xl text-primary-green font-extrabold hover:text-secondary-green transition-colors duration-200"
+          className="sm:text-lg lg:text-xl xl:text-2xl text-accent font-extrabold hover:text-accent/80 transition-colors duration-200"
         >
           Ahmer
         </Link>
@@ -37,19 +32,19 @@ export default function Navbar() {
         <div className="hidden lg:flex gap-8 text-lg font-medium">
           <Link
             href="#about"
-            className="hover:text-secondary-green text-primary-green transition-colors"
+            className="text-neutral-300 hover:text-accent transition-colors"
           >
             About
           </Link>
           <Link
             href="#projects"
-            className="hover:text-secondary-green text-primary-green transition-colors"
+            className="text-neutral-300 hover:text-accent transition-colors"
           >
             Projects
           </Link>
           <Link
             href="#contact"
-            className="hover:text-secondary-green text-primary-green transition-colors"
+            className="text-neutral-300 hover:text-accent transition-colors"
           >
             Contact
           </Link>
@@ -64,9 +59,8 @@ export default function Navbar() {
           aria-label="Toggle navigation menu"
         >
           <ChevronRight
-            color="#6ca651"
             strokeWidth={3}
-            className={`transition-transform duration-200 ${
+            className={`text-accent transition-transform duration-200 ${
               open ? "rotate-90" : "rotate-0"
             }`}
           />
@@ -79,25 +73,25 @@ export default function Navbar() {
           open ? "max-h-48 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="flex flex-col gap-4 px-6 py-4 bg-white/80">
+        <div className="flex flex-col gap-4 px-6 py-4 bg-surface border-t border-border">
           <Link
             href="#about"
             onClick={() => setOpen(false)}
-            className="text-primary-green hover:text-secondary-green transition-colors font-medium"
+            className="text-neutral-300 hover:text-accent transition-colors font-medium"
           >
             About
           </Link>
           <Link
             href="#projects"
             onClick={() => setOpen(false)}
-            className="text-primary-green hover:text-secondary-green transition-colors font-medium"
+            className="text-neutral-300 hover:text-accent transition-colors font-medium"
           >
             Projects
           </Link>
           <Link
             href="#contact"
             onClick={() => setOpen(false)}
-            className="text-primary-green hover:text-secondary-green transition-colors font-medium"
+            className="text-neutral-300 hover:text-accent transition-colors font-medium"
           >
             Contact
           </Link>

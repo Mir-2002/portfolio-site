@@ -1,22 +1,25 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #171717;
+  --foreground: #e5e5e5;
 }
 
 @theme {
-  --color-primary-green: #40513b !important;
-  --color-secondary-green: #84934a;
-  --color-black: #37353e !important;
+  --color-surface: #1e1e1e;
+  --color-surface-hover: #272727;
+  --color-accent: #4a9a5e;
+  --color-muted: #737373;
+  --color-border: #2a2a2a;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-jetbrains-mono), monospace;
-  background-image: url("/circle-scatter-haikei.svg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
+  overflow-x: hidden;
 }
