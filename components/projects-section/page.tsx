@@ -49,15 +49,6 @@ const projects: Project[] = [
     imageSrc: THUMB("https://quickchat-by-mir.vercel.app/"),
   },
   {
-    title: "CS Expo 2026",
-    description:
-      "Lead the development of the website that showcases the CS Expo 2026 event of the College of Computer Studies at FEU Institute of Technology.",
-    technologies: ["Next.js", "Vercel"],
-    githubUrl: "https://github.com/Mir-2002/cs-expo-2026",
-    liveUrl: "https://cs-expo-2026.vercel.app/",
-    imageSrc: THUMB("https://cs-expo-2026.vercel.app/"),
-  },
-  {
     title: "oGBA",
     description:
       "A web-based Game Boy Advance emulator with cloud ROM sync, letting users play their GBA library from any browser with saves stored in the cloud.",
