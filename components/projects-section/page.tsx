@@ -57,6 +57,15 @@ const projects: Project[] = [
     liveUrl: "https://cs-expo-2026.vercel.app/",
     imageSrc: THUMB("https://cs-expo-2026.vercel.app/"),
   },
+  {
+    title: "oGBA",
+    description:
+      "A web-based Game Boy Advance emulator with cloud ROM sync, letting users play their GBA library from any browser with saves stored in the cloud.",
+    technologies: ["React", "Neon", "Vercel Serverless", "Google OAuth"],
+    githubUrl: "https://github.com/Mir-2002/ogba",
+    liveUrl: "https://ogba-nine.vercel.app/",
+    imageSrc: THUMB("https://ogba-nine.vercel.app/"),
+  },
 ];
 
 export default function Projects() {
