@@ -12,6 +12,9 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Ahmer Macasindel",
   description: "The Portfolio of Ahmer Macasindel",
+  icons: {
+    icon: "/ahmer-logo.svg",
+  },
 };
 
 export default function RootLayout({
