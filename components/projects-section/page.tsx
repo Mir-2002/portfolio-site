@@ -1,162 +1,62 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
-import { Github, ExternalLink } from "lucide-react";
-
-interface Project {
-  title: string;
-  description: string;
-  technologies: string[];
-  githubUrl: string;
-  liveUrl?: string;
-  imageSrc?: string;
-}
-
-const THUMB = (url: string) =>
-  `https://image.thum.io/get/width/600/crop/400/noanimate/${url}`;
-
-const projects: Project[] = [
-  {
-    title: "Automated Python Codebase Documentation Generator",
-    description:
-      "A tool that parses Python codebases using Abstract Syntax Trees to create concise and readable documentations using a custom trained CodeT5 transformer model.",
-    technologies: [
-      "React",
-      "FastAPI",
-      "HuggingFace",
-      "MongoDB",
-      "PyTorch",
-      "Google Colab",
-    ],
-    githubUrl: "https://github.com/yourusername/project1",
-  },
-  {
-    title: "Playabl",
-    description:
-      "A social platform where users connect to last.fm, earn points through their scrobbles, maintain daily streaks, compete in a global leaderboard and see their activity in a heatmap.",
-    technologies: ["Next.js", "Supabase", "TanStack", "Zod", "Crons"],
-    githubUrl: "https://github.com/Mir-2002/playabl",
-    liveUrl: "https://playabl.vercel.app",
-    imageSrc: THUMB("https://playabl.vercel.app"),
-  },
-  {
-    title: "QuickChat",
-    description:
-      "A real-time chat app that allows two anonymous users to chat in a room that self-destructs after 10 minutes.",
-    technologies: ["Next.js", "Redis"],
-    githubUrl: "https://github.com/Mir-2002/realtime_chat_app",
-    liveUrl: "https://quickchat-by-mir.vercel.app/",
-    imageSrc: THUMB("https://quickchat-by-mir.vercel.app/"),
-  },
-  {
-    title: "oGBA",
-    description:
-      "A web-based Game Boy Advance emulator with cloud ROM sync, letting users play their GBA library from any browser with saves stored in the cloud.",
-    technologies: ["React", "Neon", "Vercel Serverless", "Google OAuth"],
-    githubUrl: "https://github.com/Mir-2002/ogba",
-    liveUrl: "https://ogba-nine.vercel.app/",
-    imageSrc: THUMB("https://ogba-nine.vercel.app/"),
-  },
-  {
-    title: "Eventell",
-    description:
-      "An event ticketing platform built as a microservices Spring Boot app with PostgreSQL, Keycloak, and React.",
-    technologies: [
-      "Spring Boot",
-      "React",
-      "Keycloak",
-      "PostgreSQL",
-      "Nginx",
-      "Docker",
-    ],
-    githubUrl: "https://github.com/Mir-2002/eventell",
-  },
-];
+import { ArrowUp } from "lucide-react";
+import { projects, type Project } from "@/lib/projects";
 
 export default function Projects() {
   return (
-    <section id="projects" className="w-full py-24 lg:py-32 px-10 md:px-20 border-t border-border">
-      <h2 className="text-4xl md:text-5xl font-bold text-accent mb-12">
-        What I&apos;ve Built
-      </h2>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {projects.map((project, index) => (
-          <ProjectCard key={index} project={project} />
-        ))}
+    <section id="projects" className="w-full scroll-mt-20 bg-ink text-paper">
+      <div className="flex items-end justify-between gap-4 px-4 pt-20 pb-10 md:px-8 md:pt-28">
+        <h2 className="display text-[12vw] md:text-[8vw]">
+          What I&apos;ve
+          <br />
+          Built
+        </h2>
+        <p className="label shrink-0 text-xs font-bold uppercase text-brand md:text-sm">
+          ({String(projects.length).padStart(2, "0")}) Projects
+        </p>
       </div>
+
+      <ul>
+        {projects.map((project, index) => (
+          <ProjectCard key={project.slug} project={project} index={index} />
+        ))}
+      </ul>
     </section>
   );
 }
 
-function ProjectCard({ project }: { project: Project }) {
+function ProjectCard({ project, index }: { project: Project; index: number }) {
   return (
-    <div className="bg-surface border border-border rounded-lg overflow-hidden hover:border-accent/40 transition-all duration-300">
-      {/* Image */}
-      <div className="relative w-full h-48 bg-surface-hover">
-        {project.imageSrc ? (
-          <Image
-            src={project.imageSrc}
-            alt={`${project.title} screenshot`}
-            fill
-            className="object-cover"
-            sizes="(min-width: 768px) 50vw, 100vw"
-            priority={false}
-          />
-        ) : (
-          <div className="h-full w-full flex items-center justify-center">
-            <span className="text-muted text-sm">Image Placeholder</span>
-          </div>
-        )}
-      </div>
+    <li className="border-t border-paper/20 last:border-b">
+      <Link
+        href={`/projects/${project.slug}`}
+        className="group flex flex-col gap-4 px-4 py-8 transition-colors duration-300 hover:bg-paper/5 focus-visible:bg-paper/5 md:px-8 md:py-12 lg:flex-row lg:items-start lg:gap-8"
+      >
+        <span className="label text-sm font-bold text-brand lg:w-12 lg:pt-3 md:text-base">
+          {String(index + 1).padStart(2, "0")}
+        </span>
 
-      {/* Content */}
-      <div className="p-6 flex flex-col justify-between">
-        <h3 className="text-xl font-bold text-accent mb-3">
-          {project.title}
-        </h3>
+        <div className="min-w-0 flex-1 transition-transform duration-300 lg:group-hover:translate-x-4">
+          <h3 className="display text-[clamp(2rem,7vw,5.5rem)] break-words">
+            {project.title}
+          </h3>
 
-        <p className="text-muted mb-4 text-sm leading-relaxed">
-          {project.description}
-        </p>
+          <p className="mt-5 max-w-2xl text-sm leading-relaxed text-paper/70 md:text-base">
+            {project.description}
+          </p>
 
-        {/* Technologies */}
-        <div className="flex flex-wrap gap-2 mb-4">
-          {project.technologies.map((tech, idx) => (
-            <span
-              key={idx}
-              className="px-3 py-1 bg-accent/10 text-accent border border-accent/20 text-xs font-medium rounded-full"
-            >
-              {tech}
-            </span>
-          ))}
+          <span className="label mt-6 inline-block border-b-2 border-brand pb-0.5 text-xs font-bold uppercase lg:hidden">
+            View project →
+          </span>
         </div>
 
-        {/* Links */}
-        <div className="flex gap-4">
-          <Link
-            href={project.githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 text-muted hover:text-accent transition-colors"
-          >
-            <Github size={20} />
-            <span className="text-sm font-medium">Code</span>
-          </Link>
-
-          {project.liveUrl && (
-            <Link
-              href={project.liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-muted hover:text-accent transition-colors"
-            >
-              <ExternalLink size={20} />
-              <span className="text-sm font-medium">Live Demo</span>
-            </Link>
-          )}
-        </div>
-      </div>
-    </div>
+        <ArrowUp
+          aria-hidden="true"
+          strokeWidth={2.5}
+          className="hidden h-16 w-16 shrink-0 rotate-0 text-brand opacity-0 transition duration-300 group-hover:rotate-45 group-hover:opacity-100 group-focus-visible:rotate-45 group-focus-visible:opacity-100 lg:block"
+        />
+      </Link>
+    </li>
   );
 }

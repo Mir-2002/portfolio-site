@@ -1,101 +1,59 @@
-"use client";
-import { ChevronRight } from "lucide-react";
+import { Github, Linkedin } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
-import React, { useState, useEffect } from "react";
+import React from "react";
+
+const LINKS = [
+  { href: "/#about", label: "About" },
+  { href: "/#projects", label: "Projects" },
+  { href: "/#contact", label: "Contact" },
+];
+
+const SOCIALS = [
+  { href: "https://github.com/Mir-2002", label: "GitHub", Icon: Github },
+  {
+    href: "https://www.linkedin.com/in/ahmer-macasindel-a02280331/",
+    label: "LinkedIn",
+    Icon: Linkedin,
+  },
+];
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 1024) {
-        setOpen(false);
-      }
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
   return (
-    <nav className="sticky top-0 w-full z-20 flex flex-col bg-surface border-b border-border">
-      {/* Top bar (always visible) */}
-      <div className="flex h-[7vh] items-center justify-between px-6 md:px-10">
-        <Link
-          href="/"
-          className="sm:text-lg lg:text-xl xl:text-2xl text-accent font-extrabold hover:text-accent/80 transition-colors duration-200"
-        >
-          Ahmer
-        </Link>
+    <nav className="fixed top-0 inset-x-0 z-30 flex items-center justify-between gap-3 px-4 py-4 md:px-8">
+      <Link
+        href="/"
+        aria-label="Home"
+        className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-ink ring-1 ring-paper/25 transition-transform duration-300 hover:scale-110"
+      >
+        <Image src="/ahmer-logo.svg" alt="" width={22} height={22} />
+      </Link>
 
-        {/* Desktop menu */}
-        <div className="hidden lg:flex gap-8 text-lg font-medium">
+      <div className="label flex items-center gap-1 rounded-full bg-ink p-1 ring-1 ring-paper/25 text-xs font-bold uppercase text-paper shadow-[0_8px_24px_rgba(0,0,0,0.35)]">
+        {LINKS.map(({ href, label }) => (
           <Link
-            href="#about"
-            className="text-neutral-300 hover:text-accent transition-colors"
+            key={href}
+            href={href}
+            className="rounded-full px-3 py-2 transition-colors duration-200 hover:bg-paper hover:text-ink sm:px-4"
           >
-            About
+            {label}
           </Link>
-          <Link
-            href="#projects"
-            className="text-neutral-300 hover:text-accent transition-colors"
-          >
-            Projects
-          </Link>
-          <Link
-            href="#contact"
-            className="text-neutral-300 hover:text-accent transition-colors"
-          >
-            Contact
-          </Link>
-        </div>
-
-        {/* Mobile toggle button */}
-        <button
-          type="button"
-          onClick={() => setOpen((prev) => !prev)}
-          className="lg:hidden"
-          aria-expanded={open}
-          aria-label="Toggle navigation menu"
-        >
-          <ChevronRight
-            strokeWidth={3}
-            className={`text-accent transition-transform duration-200 ${
-              open ? "rotate-90" : "rotate-0"
-            }`}
-          />
-        </button>
+        ))}
       </div>
 
-      {/* Mobile overlay: starts below the navbar, keeps navbar visible */}
-      <div
-        className={`lg:hidden absolute top-full left-0 w-full overflow-hidden transition-all duration-300 ease-in-out ${
-          open ? "max-h-48 opacity-100" : "max-h-0 opacity-0"
-        }`}
-      >
-        <div className="flex flex-col gap-4 px-6 py-4 bg-surface border-t border-border">
+      <div className="hidden shrink-0 gap-2 sm:flex">
+        {SOCIALS.map(({ href, label, Icon }) => (
           <Link
-            href="#about"
-            onClick={() => setOpen(false)}
-            className="text-neutral-300 hover:text-accent transition-colors font-medium"
+            key={href}
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={label}
+            className="flex h-10 w-10 items-center justify-center rounded-full bg-ink text-paper ring-1 ring-paper/25 transition-transform duration-300 hover:scale-110"
           >
-            About
+            <Icon size={18} />
           </Link>
-          <Link
-            href="#projects"
-            onClick={() => setOpen(false)}
-            className="text-neutral-300 hover:text-accent transition-colors font-medium"
-          >
-            Projects
-          </Link>
-          <Link
-            href="#contact"
-            onClick={() => setOpen(false)}
-            className="text-neutral-300 hover:text-accent transition-colors font-medium"
-          >
-            Contact
-          </Link>
-        </div>
+        ))}
       </div>
     </nav>
   );

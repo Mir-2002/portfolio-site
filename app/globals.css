@@ -1,25 +1,70 @@
 @import "tailwindcss";
 
-:root {
-  --background: #171717;
-  --foreground: #e5e5e5;
-}
-
 @theme {
-  --color-surface: #1e1e1e;
-  --color-surface-hover: #272727;
-  --color-accent: #4a9a5e;
-  --color-muted: #737373;
-  --color-border: #2a2a2a;
+  --color-brand: #0d8200;
+  --color-ink: #000000;
+  --color-paper: #ffffff;
+
+  --font-display: var(--font-archivo-black), "Arial Black", sans-serif;
+  --font-mono: var(--font-space-mono), ui-monospace, monospace;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+
+  --animate-marquee: marquee 30s linear infinite;
+  --animate-marquee-reverse: marquee 30s linear infinite reverse;
+  --animate-spin-slow: spin 12s linear infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
 }
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-jetbrains-mono), monospace;
-  overflow-x: hidden;
+  background: var(--color-brand);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  overflow-x: clip;
+}
+
+::selection {
+  background: var(--color-ink);
+  color: var(--color-brand);
+}
+
+@layer components {
+  /* Archivo Black headers are always uppercase with tight tracking */
+  .display {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: -0.04em;
+    line-height: 0.88;
+  }
+
+  .label {
+    font-family: var(--font-mono);
+    letter-spacing: -0.02em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

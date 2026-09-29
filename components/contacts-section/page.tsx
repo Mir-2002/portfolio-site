@@ -1,85 +1,52 @@
 import React from "react";
 import Link from "next/link";
-import { Mail, Phone, Github, Linkedin } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export default function Contact() {
   return (
     <section
       id="contact"
-      className="min-h-screen w-full py-20 px-10 md:px-20 flex flex-col justify-center"
+      className="flex min-h-svh w-full scroll-mt-20 flex-col items-center justify-center px-4 py-28 text-center md:px-8"
     >
-      <h2 className="text-4xl md:text-5xl font-bold text-accent mb-12">
-        Get In Touch
+      <p className="label mb-6 text-xs font-bold uppercase md:text-sm">
+        Open to new opportunities &amp; collaborations
+      </p>
+
+      <h2 className="display text-[22vw] md:text-[14vw]">
+        Let&apos;s
+        <br />
+        Talk
       </h2>
 
-      <div className="max-w-2xl">
-        <p className="text-lg text-neutral-300 mb-8">
-          I&apos;m currently open to new opportunities and collaborations. Whether
-          you have a question or just want to say hi, feel free to reach out!
-        </p>
+      <p className="mt-8 max-w-md text-base font-medium md:text-lg">
+        Whether you have a question or just want to say hi, feel free to reach
+        out!
+      </p>
 
-        <div className="space-y-6">
-          {/* Email */}
-          <Link
-            href="mailto:orfianamir@gmail.com"
-            className="flex items-center gap-4 p-4 bg-surface border border-border rounded-lg hover:border-accent/40 hover:bg-surface-hover transition-all duration-300 group"
-          >
-            <div className="p-3 bg-accent/10 rounded-full group-hover:bg-accent/20 transition-colors">
-              <Mail className="text-accent" size={24} />
-            </div>
-            <div>
-              <p className="text-sm text-muted font-medium">Email</p>
-              <p className="text-accent font-semibold group-hover:text-accent/80 transition-colors">
-                orfianamir@gmail.com
-              </p>
-            </div>
-          </Link>
+      <Link
+        href="mailto:orfianamir@gmail.com"
+        className="group label mt-10 flex items-center gap-3 rounded-full border-2 border-ink bg-ink px-8 py-5 text-sm font-bold uppercase text-paper transition-transform duration-300 hover:scale-110 md:px-12 md:py-7 md:text-lg"
+      >
+        Get in touch
+        <ArrowRight
+          size={20}
+          className="transition-transform duration-300 group-hover:translate-x-1"
+        />
+      </Link>
 
-          {/* Phone */}
-          <Link
-            href="tel:+639209465218"
-            className="flex items-center gap-4 p-4 bg-surface border border-border rounded-lg hover:border-accent/40 hover:bg-surface-hover transition-all duration-300 group"
-          >
-            <div className="p-3 bg-accent/10 rounded-full group-hover:bg-accent/20 transition-colors">
-              <Phone className="text-accent" size={24} />
-            </div>
-            <div>
-              <p className="text-sm text-muted font-medium">Phone</p>
-              <p className="text-accent font-semibold group-hover:text-accent/80 transition-colors">
-                +63 920 946 5218
-              </p>
-            </div>
-          </Link>
-
-          {/* Social Links */}
-          <div className="flex gap-4 pt-4">
-            <Link
-              href="https://github.com/Mir-2002"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-4 bg-surface border border-border rounded-lg hover:border-accent/40 hover:bg-surface-hover transition-all duration-300 group"
-              aria-label="GitHub"
-            >
-              <Github
-                className="text-accent group-hover:text-accent/80 transition-colors"
-                size={28}
-              />
-            </Link>
-
-            <Link
-              href="https://www.linkedin.com/in/ahmer-macasindel-a02280331/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-4 bg-surface border border-border rounded-lg hover:border-accent/40 hover:bg-surface-hover transition-all duration-300 group"
-              aria-label="LinkedIn"
-            >
-              <Linkedin
-                className="text-accent group-hover:text-accent/80 transition-colors"
-                size={28}
-              />
-            </Link>
-          </div>
-        </div>
+      <div className="label mt-12 flex flex-col gap-3 text-sm font-bold sm:flex-row sm:gap-10 md:text-base">
+        <Link
+          href="mailto:orfianamir@gmail.com"
+          className="border-b-2 border-ink pb-0.5 transition-transform duration-300 hover:translate-x-4"
+        >
+          orfianamir@gmail.com
+        </Link>
+        <Link
+          href="tel:+639209465218"
+          className="border-b-2 border-ink pb-0.5 transition-transform duration-300 hover:translate-x-4"
+        >
+          +63 920 946 5218
+        </Link>
       </div>
     </section>
   );

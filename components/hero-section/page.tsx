@@ -1,79 +1,75 @@
-"use client";
-import React, { useState, useEffect } from "react";
+import { ArrowDown } from "lucide-react";
+import React from "react";
 
 const ROLES = ["Software Engineer", "Full Stack Developer", "Open Source Enthusiast"];
-const TYPE_SPEED = 80;
-const DELETE_SPEED = 40;
-const PAUSE_MS = 1500;
+
+// Circle of radius 60 centred in a 144x144 box, starting at the top.
+const CIRCLE_PATH = "M 72,72 m -60,0 a 60,60 0 1,1 120,0 a 60,60 0 1,1 -120,0";
+const CIRCUMFERENCE = 2 * Math.PI * 60;
+
+function ScrollIndicator() {
+  return (
+    <a
+      href="#projects"
+      aria-label="Scroll down"
+      className="relative flex h-36 w-36 shrink-0 items-center justify-center transition-transform duration-300 hover:scale-110"
+    >
+      <svg
+        viewBox="0 0 144 144"
+        className="absolute inset-0 h-full w-full animate-spin-slow"
+        aria-hidden="true"
+      >
+        <defs>
+          <path id="scroll-circle" d={CIRCLE_PATH} />
+        </defs>
+        <text className="fill-ink font-mono text-[9px] font-bold uppercase">
+          <textPath
+            href="#scroll-circle"
+            textLength={CIRCUMFERENCE}
+            lengthAdjust="spacing"
+          >
+            {"Scroll Down • ".repeat(4)}
+          </textPath>
+        </text>
+      </svg>
+      <ArrowDown size={28} strokeWidth={2.5} className="text-ink" />
+    </a>
+  );
+}
 
 export default function Hero() {
-  const [displayText, setDisplayText] = useState("");
-  const [roleIndex, setRoleIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  useEffect(() => {
-    const current = ROLES[roleIndex];
-
-    if (!isDeleting && displayText === current) {
-      const timeout = setTimeout(() => setIsDeleting(true), PAUSE_MS);
-      return () => clearTimeout(timeout);
-    }
-
-    if (isDeleting && displayText === "") {
-      setIsDeleting(false);
-      setRoleIndex((prev) => (prev + 1) % ROLES.length);
-      return;
-    }
-
-    const speed = isDeleting ? DELETE_SPEED : TYPE_SPEED;
-    const timeout = setTimeout(() => {
-      setDisplayText(
-        isDeleting
-          ? current.slice(0, displayText.length - 1)
-          : current.slice(0, displayText.length + 1)
-      );
-    }, speed);
-
-    return () => clearTimeout(timeout);
-  }, [displayText, roleIndex, isDeleting]);
-
   return (
     <section
       id="about"
-      className="relative min-h-screen w-full flex flex-col items-start justify-center px-10 md:px-20"
+      className="flex min-h-svh w-full flex-col justify-end px-4 pt-28 pb-8 md:px-8"
     >
-      {/* Full-bleed dot grid that fades top to bottom */}
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: "50%",
-          transform: "translateX(-50%)",
-          width: "100vw",
-          height: "100%",
-          backgroundImage: "radial-gradient(circle, #333333 2px, transparent 2px)",
-          backgroundSize: "30px 30px",
-          maskImage: "linear-gradient(to bottom, black 0%, black 35%, transparent 80%)",
-          WebkitMaskImage: "linear-gradient(to bottom, black 0%, black 35%, transparent 80%)",
-          pointerEvents: "none",
-        }}
-      />
-
-      <div className="relative z-10">
-        <h1 className="text-6xl text-white font-bold">Hey,</h1>
-        <h1 className="text-6xl text-accent font-bold mb-6">
-          I&apos;m Ahmer
-        </h1>
-
-        <h2 className="text-2xl border border-accent text-accent px-4 py-1.5 inline-block mb-6 min-h-[3rem]">
-          {displayText}
-          <span className="animate-pulse ml-0.5">|</span>
-        </h2>
-
-        <p className="text-base w-3/4 lg:w-full text-neutral-300 font-normal">
+      <div className="flex flex-1 flex-col items-center justify-center text-center">
+        <p className="label mb-4 text-sm font-bold uppercase md:text-base">
+          Hey, I&apos;m
+        </p>
+        <h1 className="display text-[22vw] md:text-[16vw]">Ahmer</h1>
+        <p className="mt-6 max-w-md text-base font-medium md:text-lg">
           An aspiring young developer with a passion for building impactful
           software solutions.
         </p>
+      </div>
+
+      <div className="mt-12 grid grid-cols-2 items-center gap-6 border-t-2 border-ink pt-6 md:grid-cols-3">
+        <p className="label text-xs font-bold uppercase md:text-sm">
+          Based in
+          <br />
+          the Philippines
+        </p>
+
+        <div className="order-last col-span-2 flex justify-center md:order-none md:col-span-1">
+          <ScrollIndicator />
+        </div>
+
+        <ul className="label text-right text-xs font-bold uppercase md:text-sm">
+          {ROLES.map((role) => (
+            <li key={role}>{role}</li>
+          ))}
+        </ul>
       </div>
     </section>
   );
