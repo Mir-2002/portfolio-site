@@ -31,13 +31,13 @@ const projects: Project[] = [
     githubUrl: "https://github.com/yourusername/project1",
   },
   {
-    title: "Spoon",
+    title: "Playabl",
     description:
-      "A last.fm clone that lets users view their top artists, albums, and tracks in various time periods.",
-    technologies: ["Next.js", "Spotify Web API"],
-    githubUrl: "https://github.com/Mir-2002/spoon",
-    liveUrl: "https://spoon-iota.vercel.app/",
-    imageSrc: THUMB("https://spoon-iota.vercel.app/"),
+      "A social platform where users connect to last.fm, earn points through their scrobbles, maintain daily streaks, compete in a global leaderboard and see their activity in a heatmap.",
+    technologies: ["Next.js", "Supabase", "TanStack", "Zod", "Crons"],
+    githubUrl: "https://github.com/Mir-2002/playabl",
+    liveUrl: "https://playabl.vercel.app",
+    imageSrc: THUMB("https://playabl.vercel.app"),
   },
   {
     title: "QuickChat",
