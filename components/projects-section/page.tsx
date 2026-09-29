@@ -57,6 +57,20 @@ const projects: Project[] = [
     liveUrl: "https://ogba-nine.vercel.app/",
     imageSrc: THUMB("https://ogba-nine.vercel.app/"),
   },
+  {
+    title: "Eventell",
+    description:
+      "An event ticketing platform built as a microservices Spring Boot app with PostgreSQL, Keycloak, and React.",
+    technologies: [
+      "Spring Boot",
+      "React",
+      "Keycloak",
+      "PostgreSQL",
+      "Nginx",
+      "Docker",
+    ],
+    githubUrl: "https://github.com/Mir-2002/eventell",
+  },
 ];
 
 export default function Projects() {
