@@ -87,6 +87,30 @@ export const projects: Project[] = [
       image("eventell", "qr-code-validator.png", "QR Code Validator", 1083, 950),
     ],
   },
+  {
+    slug: "ragnaw",
+    title: "RAGNaw",
+    description:
+      "A Retrieval Augmented Generation (RAG) pipeline built on top of a SQLite database made up of PokeAPI data using hybrid retrieval and tool calling with Groq and Gemini models.",
+    technologies: [
+      "FastAPI",
+      "Next.js",
+      "React",
+      "fastembed",
+      "MiniLM",
+      "bm25s",
+      "SQLite",
+      "Docker",
+    ],
+    githubUrl: "https://github.com/Mir-2002/ragnaw",
+    liveUrl: "https://ragnaw.vercel.app/",
+    images: [
+      image("ragnaw", "landing.png", "Landing", 818, 949),
+      image("ragnaw", "conversation.png", "Conversation", 792, 951),
+      image("ragnaw", "about.png", "About", 504, 539),
+      image("ragnaw", "retro-ui-options.png", "Retro UI Options", 508, 259),
+    ],
+  },
 ];
 
 export function getProject(slug: string) {
